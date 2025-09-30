@@ -24,7 +24,7 @@
   ],
   "imoveis": [
     {
-      "id": 1,
+      "id": "1",
       "titulo": "Teste",
       "tipo": "Casa",
       "cidade": "SP",
@@ -44,5 +44,11 @@
       "corretorId": 1
     }
   ],
-  "interesses": []
+  "interesses": [
+    {
+      "id": "c7eb",
+      "clienteId": 2,
+      "imovelId": "1"
+    }
+  ]
 }
