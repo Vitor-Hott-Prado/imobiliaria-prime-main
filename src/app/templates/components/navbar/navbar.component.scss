@@ -1,29 +1,29 @@
 @use 'src/styles.scss' as *;
 
 .navbar {
-  background-color: $cor-secundaria;
-  padding: 0 0; /* removemos padding vertical aqui */
-  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #219616; // azul escuro consistente
+  padding: 0;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.12); // sombra suave
   position: sticky;
   top: 0;
   z-index: 1000;
 
   .container {
     display: flex;
-    align-items: center;        /* alinha verticalmente tudo */
-    justify-content: space-between; /* logo à esquerda, nav à direita */
+    align-items: center;
+    justify-content: space-between;
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0.8rem 1.5rem;     /* padding vertical/margem interna aqui */
+    padding: 0.8rem 1.5rem;
   }
 
   .logo-text {
-    color: white;
+    color: #ffffff; // branco para contraste
     font-size: 1.6rem;
     font-weight: 700;
     text-decoration: none;
-    line-height: 1;             /* evita altura extra por linha */
+    line-height: 1;
   }
 
   .navbar-nav {
@@ -31,22 +31,22 @@
     flex-direction: row;
     gap: 1.2rem;
     align-items: center;
-    margin-left: auto;          /* força nav para a direita (redundante, mas seguro) */
+    margin-left: auto;
   }
 
   .nav-link {
-    color: rgba(255, 255, 255, 0.85);
+    color: rgba(255, 255, 255, 0.9);
     font-weight: 500;
     padding: 0.5rem 1rem;
     border-radius: 6px;
     text-decoration: none;
     transition: all 0.3s;
-    white-space: nowrap;        /* evita quebra de texto em telas estreitas */
+    white-space: nowrap;
 
     &:hover,
     &.active {
-      color: white;
-      background-color: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      background-color: rgba(0, 119, 204, 0.2); // hover azul suave
     }
   }
 
@@ -58,12 +58,11 @@
     }
   }
 
-  // Responsivo: mantém layout até em telas pequenas
   @media (max-width: 768px) {
     .navbar-nav {
       gap: 0.8rem;
       flex-wrap: wrap;
-      justify-content: flex-end; /* mantém à direita mesmo quebrando linha */
+      justify-content: flex-end;
     }
   }
 }

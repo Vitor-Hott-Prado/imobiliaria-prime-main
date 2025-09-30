@@ -1,22 +1,20 @@
 @import 'src/styles.scss';
 
-// Garante que o container de login ocupe toda a largura da viewport
+// Container de login
 .login-container {
-  // Usa 100dvh para melhor compatibilidade em mobile
   min-height: 100dvh;
-  min-height: 100vh; // fallback
-  width: 100vw; // 👈 Força largura total da janela
+  min-height: 100vh; 
+  width: 100vw;
   display: flex;
   align-items: center;
   justify-content: center;
-  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+  background: linear-gradient(135deg, #e8f5e9 0%, #ffffff 100%); // verde suave para branco
   padding: 1rem;
   margin: 0;
   box-sizing: border-box;
   position: relative;
-  overflow-x: hidden; // Evita scroll horizontal
+  overflow-x: hidden;
 
-  // Garante que o fundo cubra toda a área mesmo com posicionamento
   &::before {
     content: '';
     position: absolute;
@@ -32,47 +30,47 @@
     width: 100%;
     max-width: 420px;
     padding: 2.5rem;
-    background: white;
+    background: #ffffff;
     border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
     animation: fadeIn 0.6s ease;
     text-align: center;
 
     .titulo-principal {
-      color: $cor-primaria;
+      color: #2e7d32; // verde vibrante
       font-weight: 700;
       margin-bottom: 0.5rem;
     }
 
     .subtitulo {
-      color: #666;
+      color: #555;
       font-size: 0.95rem;
       margin-bottom: 2rem;
     }
 
     .form-label {
       font-weight: 600;
-      color: $cor-secundaria;
+      color: #2e7d32; // mantém verde consistente
       margin-bottom: 1px;
     }
 
     .form-control {
       border-radius: 10px;
       padding: 0.8rem;
-      border: 1px solid #ddd;
+      border: 1px solid #ccc;
       transition: all 0.3s;
       margin-bottom: 1rem;
       width: 100%;
       text-align: left;
 
       &:focus {
-        border-color: $cor-primaria;
-        box-shadow: 0 0 0 3px rgba(0, 155, 119, 0.1);
+        border-color: #2e7d32;
+        box-shadow: 0 0 0 3px rgba(46, 125, 50, 0.15); // verde claro transparente
       }
     }
 
     .btn-principal {
-      background-color: $cor-primaria;
+      background-color: #2e7d32;
       border: none;
       width: 100%;
       cursor: pointer;
@@ -84,13 +82,13 @@
       margin-top: 1rem;
 
       &:hover {
-        background-color: darken($cor-primaria, 10%);
+        background-color: darken(#2e7d32, 10%);
         transform: translateY(-2px);
       }
     }
 
     .link-registro {
-      color: $cor-primaria;
+      color: #1b5e20; // verde escuro
       text-decoration: none;
       font-weight: 600;
       margin-left: 4px;
@@ -101,7 +99,7 @@
     }
 
     .texto-cinza {
-      color: #666;
+      color: #555;
       margin-top: 1.5rem;
     }
   }

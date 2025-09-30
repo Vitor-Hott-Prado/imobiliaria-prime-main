@@ -1,8 +1,8 @@
 @import 'src/styles.scss';
 
 .footer {
-  background-color: $cor-secundaria;
-  color: rgba(255, 255, 255, 0.7);
+  background-color: darken($cor-secundaria, 5%); // um pouco mais escuro para contraste
+  color: rgba(255, 255, 255, 0.85); // texto mais visível
   padding: 2rem 0;
   margin-top: 3rem;
 
@@ -29,14 +29,14 @@
     justify-content: center;
     width: 40px;
     height: 40px;
-    background-color: rgba(255, 255, 255, 0.1);
-    color: white;
+    background-color: rgba(255, 255, 255, 0.15); // mais leve, mas ainda visível
+    color: #fff;
     border-radius: 50%;
     font-size: 1rem;
     transition: all 0.3s;
 
     &:hover {
-      background-color: $cor-primaria;
+      background-color: lighten($cor-primaria, 5%); // destaque sutil no hover
       transform: translateY(-3px);
     }
   }

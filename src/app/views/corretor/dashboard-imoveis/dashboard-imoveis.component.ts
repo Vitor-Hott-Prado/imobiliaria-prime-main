@@ -6,8 +6,6 @@ import { AuthService } from 'src/app/core/services/auth.service';
   selector: 'app-dashboard-imoveis',
   templateUrl: './dashboard-imoveis.component.html',
   styleUrls: ['./dashboard-imoveis.component.scss']
-  // NÃO adicione: standalone: true
-  // NÃO adicione: imports: [FormsModule]
 })
 export class DashboardImoveisComponent implements OnInit {
   imoveis: any[] = [];
@@ -29,38 +27,30 @@ export class DashboardImoveisComponent implements OnInit {
   }
 
   carregarImoveis(): void {
-  this.imoveisService.getImoveis().subscribe({
-    next: (data) => {
-      console.log('Dados recebidos do backend:', data);
+    this.carregando = true;
+    this.imoveisService.getImoveis().subscribe({
+      next: (data) => {
+        const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+        const corretorId = Number(usuario.id);
 
-      const usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
-      const corretorId = Number(usuario.id);
+        const imoveisFiltrados = data
+          .map(imovel => ({
+            ...imovel,
+            id: Number(imovel.id),
+            corretorId: Number(imovel.corretorId)
+          }))
+          .filter(imovel => imovel.corretorId === corretorId);
 
-      console.log('Corretor ID logado (convertido para número):', corretorId);
-
-      const imoveisFiltrados = data
-        .map(imovel => ({
-          ...imovel,
-          id: Number(imovel.id),
-          corretorId: Number(imovel.corretorId)
-        }))
-        .filter((imovel: any) => {
-          console.log(`Comparando: imovel.corretorId (${imovel.corretorId}) === corretorId (${corretorId})`);
-          return imovel.corretorId === corretorId;
-        });
-
-      console.log('Imóveis filtrados:', imoveisFiltrados);
-
-      this.imoveis = imoveisFiltrados;
-      this.carregando = false;
-    },
-    error: (err) => {
-      console.error('Erro ao carregar imóveis:', err);
-      this.erro = 'Erro ao carregar imóveis.';
-      this.carregando = false;
-    }
-  });
-}
+        this.imoveis = imoveisFiltrados;
+        this.carregando = false;
+      },
+      error: (err) => {
+        console.error('Erro ao carregar imóveis:', err);
+        this.erro = 'Erro ao carregar imóveis.';
+        this.carregando = false;
+      }
+    });
+  }
 
   novoImovel(): void {
     this.imovelEditando = {
@@ -76,7 +66,8 @@ export class DashboardImoveisComponent implements OnInit {
   }
 
   editarImovel(imovel: any): void {
-    this.imovelEditando = { ...imovel };
+    // Garante que o id seja numérico para evitar duplicação
+    this.imovelEditando = { ...imovel, id: Number(imovel.id) };
     this.exibindoForm = true;
   }
 
@@ -96,7 +87,7 @@ export class DashboardImoveisComponent implements OnInit {
 
   deletarImovel(id: number): void {
     if (confirm('Tem certeza que deseja excluir este imóvel?')) {
-      this.imoveisService.deleteImovel(id).subscribe({
+      this.imoveisService.deleteImovel(Number(id)).subscribe({
         next: () => this.carregarImoveis(),
         error: () => alert('Erro ao excluir imóvel.')
       });
