@@ -1,0 +1,11 @@
+<!-- Seção de Imóveis em Destaque -->
+<section class="imoveis-destaque py-5">
+  <div class="container">
+    <h2 class="text-center mb-5">Hotéis em Destaque</h2>
+    <div class="row g-4">
+      <div class="col-md-4" *ngFor="let imovel of imoveisDestaque; let i = index">
+        <app-card-imovel [imovel]="imovel"></app-card-imovel>
+      </div>
+    </div>
+  </div>
+</section>

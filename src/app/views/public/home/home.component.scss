@@ -1,0 +1,88 @@
+@import 'src/styles.scss';
+
+.hero-section {
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://images.unsplash.com/photo-1560518883-ce09059eeffa?ixlib=rb-4.0.3&auto=format&fit=crop&w=1950&q=80');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  margin-bottom: 3rem;
+
+  .display-5 {
+    font-weight: 700;
+  }
+
+  .btn-hero {
+    background-color: $cor-primaria;
+    color: white;
+    font-weight: 600;
+    border-radius: 50px;
+    transition: all 0.3s;
+
+    &:hover {
+      background-color: darken($cor-primaria, 10%);
+      transform: scale(1.05);
+    }
+  }
+}
+
+.imoveis-destaque {
+  display: flex;
+  margin: 10px 20px;
+
+  .card {
+    border-radius: 12px;
+    overflow: hidden;
+    transition: transform 0.3s, box-shadow 0.3s;
+
+    &:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+
+    .card-title {
+      font-weight: 600;
+      color: $cor-secundaria;
+    }
+
+    .btn-outline-primary {
+      border-radius: 8px;
+      font-weight: 500;
+    }
+  }
+}
+
+.call-to-action {
+  .btn-success {
+    background-color: $cor-primaria;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+
+    &:hover {
+      background-color: darken($cor-primaria, 10%);
+    }
+  }
+
+  .btn-outline-success {
+    color: $cor-primaria;
+    border-color: $cor-primaria;
+    border-radius: 8px;
+    font-weight: 600;
+
+    &:hover {
+      background-color: $cor-primaria;
+      color: white;
+    }
+  }
+}
+
+// Responsivo
+@media (max-width: 768px) {
+  .hero-section .display-5 {
+    font-size: 2rem;
+  }
+
+  .hero-section .lead {
+    font-size: 1rem;
+  }
+}
